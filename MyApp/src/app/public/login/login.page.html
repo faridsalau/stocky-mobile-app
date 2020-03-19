@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="ion-text-center">
+      StockY
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #userForm="ngForm">
+    <ion-grid>
+      <ion-row color="primary" class="ion-justify-content-center">
+        <ion-col
+          class="ion-align-self-center"
+          size-md="6"
+          size-lg="5"
+          size-xs="12"
+        >
+          <div class="ion-text-center">
+            <h3 class="text-color">Login/Register</h3>
+          </div>
+          <div class="ion-padding bottom-padding">
+            <ion-item>
+              <ion-input
+                name="email"
+                type="email"
+                placeholder="Email"
+                ngModel
+              ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input
+                name="password"
+                type="password"
+                placeholder="Password"
+                ngModel
+              ></ion-input>
+            </ion-item>
+          </div>
+          <div class="ion-padding">
+            <ion-button
+              (click)="login()"
+              expand="block"
+              routerDirection="forward"
+              href="tabs"
+              >Login</ion-button
+            >
+            <ion-button
+              expand="block"
+              color="secondary"
+              routerDirection="forward"
+              href="tabs"
+              >Register</ion-button
+            >
+            <a href="/forgot-password"><h5>Forgot Password?</h5></a>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

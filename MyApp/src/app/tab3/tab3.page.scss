@@ -1,3 +1,15 @@
 ion-content ion-toolbar {
   --background: translucent;
 }
+
+ion-card-subtitle {
+  text-transform: none;
+}
+
+ion-list {
+  margin-bottom: 10px;
+}
+
+ion-card-title {
+  font-size: large;
+}
