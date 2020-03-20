@@ -1,14 +1,19 @@
-ion-content ion-toolbar {
-  --background: translucent;
-}
+// ion-content ion-toolbar {
+//   --background: translucent;
+// }
 
 ion-content{
   text-align: center;
   font-size: 45px;
 }
-#login{
+
+// #login{
+//   text-align: center;
+//   margin: 0 auto;
+//   display: inline-block;
+//   padding-top: 15px;
+// }
+
+ion-item{
   text-align: center;
-  margin: 0 auto;
-  display: inline-block;
-  padding-top: 15px;
 }
