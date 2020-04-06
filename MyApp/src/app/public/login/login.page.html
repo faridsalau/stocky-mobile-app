@@ -25,7 +25,7 @@
                 name="email"
                 type="email"
                 placeholder="Email"
-                ngModel
+                [(ngModel)]="user.email"
               ></ion-input>
             </ion-item>
             <ion-item>
@@ -33,22 +33,27 @@
                 name="password"
                 type="password"
                 placeholder="Password"
-                ngModel
+                [(ngModel)]="user.password"
               ></ion-input>
             </ion-item>
           </div>
           <div class="ion-padding">
-            <ion-button expand="block" routerDirection="forward" href="tabs"
-              >Login</ion-button
-            >
-            <ion-button
-              expand="block"
-              color="secondary"
-              routerDirection="forward"
-              href="tabs"
+            <ion-button expand="block" (click)="login()">Login</ion-button>
+            <ion-button expand="block" color="secondary" (click)="register()"
               >Register</ion-button
             >
-            <a href="/forgot-password"><h5>Forgot Password?</h5></a>
+            <a (click)="toggleShow()"><h5>Forgot/Reset Password</h5></a>
+            <ion-item *ngIf="show">
+              <ion-input
+                name="reset-email"
+                type="email"
+                placeholder="Reset email"
+                [(ngModel)]="resetEmail"
+              ></ion-input>
+              <ion-button expand="block" (click)="sendReset()"
+                >Send reset email</ion-button
+              >
+            </ion-item>
           </div>
         </ion-col>
       </ion-row>
