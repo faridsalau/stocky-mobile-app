@@ -2,6 +2,8 @@ import { Component } from "@angular/core";
 import { AlertController } from "@ionic/angular";
 import { AngularFireAuth } from "@angular/fire/auth";
 import { Router } from "@angular/router";
+import { AngularFirestore } from "@angular/fire/firestore";
+
 
 @Component({
   selector: "app-tab1",
@@ -12,6 +14,7 @@ export class Tab1Page {
   constructor(
     private alertController: AlertController,
     public afAuth: AngularFireAuth,
+    private fireStore: AngularFirestore,
     private router: Router
   ) {}
 
@@ -37,4 +40,12 @@ export class Tab1Page {
         console.log("Something went wrong, please try again");
       });
   }
+
+  
+
+  ngOnInit() {
+
+  }
 }
+
+
