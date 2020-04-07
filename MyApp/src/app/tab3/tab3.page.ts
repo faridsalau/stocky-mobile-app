@@ -4,13 +4,17 @@ import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { Router } from "@angular/router";
 
+interface User {
+  shoeSize?: number;
+  username?: string;
+}
 @Component({
   selector: "app-tab3",
   templateUrl: "tab3.page.html",
   styleUrls: ["tab3.page.scss"],
 })
 export class Tab3Page {
-  user: Object = {};
+  user: User = {};
   hasWalmart: boolean = false;
   hasKroger: boolean = false;
   hasUnion: boolean = false;
