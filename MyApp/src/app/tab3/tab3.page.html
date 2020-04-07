@@ -10,7 +10,7 @@
 <ion-content>
   <ion-card class="ion-text-center">
     <ion-card-header>
-      <ion-card-title>@username</ion-card-title>
+      <ion-card-title>@{{ user.username }}</ion-card-title>
     </ion-card-header>
   </ion-card>
 
@@ -18,7 +18,7 @@
     <ion-item>
       <!-- add onClick functionality -->
       <ion-label>Shoe size</ion-label>
-      <ion-label (click)="pickShoeSize()">8</ion-label>
+      <ion-label (click)="pickShoeSize()">{{ user.shoeSize }}</ion-label>
     </ion-item>
 
     <ion-item>
@@ -34,15 +34,15 @@
     <ion-list-header>Meetup locations</ion-list-header>
     <ion-item>
       <ion-label>Walmart</ion-label>
-      <ion-checkbox></ion-checkbox>
+      <ion-checkbox checked="{{hasWalmart}}"></ion-checkbox>
     </ion-item>
     <ion-item>
       <ion-label>Kroger</ion-label>
-      <ion-checkbox></ion-checkbox>
+      <ion-checkbox checked="{{hasKroger}}"></ion-checkbox>
     </ion-item>
     <ion-item>
       <ion-label>The Union</ion-label>
-      <ion-checkbox></ion-checkbox>
+      <ion-checkbox checked="{{hasTheUnion}}"></ion-checkbox>
     </ion-item>
   </ion-list>
 </ion-content>

@@ -4,13 +4,14 @@ import { AngularFireAuth } from "@angular/fire/auth";
 import { Router } from "@angular/router";
 import { AngularFirestore } from "@angular/fire/firestore";
 
-
 @Component({
   selector: "app-tab1",
   templateUrl: "tab1.page.html",
   styleUrls: ["tab1.page.scss"],
 })
 export class Tab1Page {
+  tradeableShoes: Array<object> = [];
+  userShoes: Array<object> = [];
   constructor(
     private alertController: AlertController,
     public afAuth: AngularFireAuth,
@@ -41,11 +42,26 @@ export class Tab1Page {
       });
   }
 
-  
-
-  ngOnInit() {
-
+  async ngOnInit() {
+    let username;
+    this.afAuth.auth.onAuthStateChanged((user) => {
+      username = user.displayName;
+    });
+    const db = this.fireStore.firestore;
+    const ref = await db.collection("user_shoes");
+    const query = await ref.orderBy("createdAt", "desc");
+    const allShoes = await query.get();
+    if (username) {
+      allShoes.forEach((shoe) => {
+        const shoeData = shoe.data();
+        shoeData.shoeId = shoe.id;
+        console.log(shoeData);
+        if (shoe.data().username !== username) {
+          this.tradeableShoes.push(shoeData);
+        } else {
+          this.userShoes.push(shoeData);
+        }
+      });
+    }
   }
 }
-
-

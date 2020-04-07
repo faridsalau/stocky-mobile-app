@@ -10,18 +10,18 @@
 <ion-content>
   <div id="slides">
     <ion-slides pages>
-      <ion-slide>
-        <img src="assets/img/jordan1.jpg" alt="Jordan 1" />
-        <p>Mint condition Jordan 1s.</p>
+      <ion-slide *ngFor="let shoe of tradeableShoes">
+        <img src="{{ shoe.shoeUrl }}" alt="Jordan 1" />
+        <p>{{ shoe.shoeName }}, {{ shoe.condition }}</p>
         <ion-select placeholder="Trade Options">
-          <ion-select-option>First Option</ion-select-option>
-          <ion-select-option>Second Option</ion-select-option>
+          <ion-select-option *ngFor="let shoe of userShoes"
+            >{{ shoe.shoeName }}</ion-select-option
+          >
+          <ion-select-option disabled *ngIf="userShoes.length === 0"
+            >You have no shoes to trade</ion-select-option
+          >
         </ion-select>
         <ion-button (click)="createTrade()">Trade</ion-button>
-      </ion-slide>
-
-      <ion-slide>
-        <p>Second slide</p>
       </ion-slide>
     </ion-slides>
   </div>

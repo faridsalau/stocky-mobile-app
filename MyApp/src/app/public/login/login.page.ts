@@ -6,6 +6,7 @@ import { Router } from "@angular/router";
 interface User {
   email?: string;
   password?: string;
+  username?: string;
 }
 @Component({
   selector: "app-login",
@@ -16,6 +17,7 @@ export class LoginPage implements OnInit {
   user: User = {
     email: "",
     password: "",
+    username: "",
   };
 
   error: string = "";
@@ -32,7 +34,7 @@ export class LoginPage implements OnInit {
     const db = this.fireStore.firestore;
     const auth = this.afAuth.auth;
     const alreadyFoundError = new Error("userAlreadyExists");
-    db.doc(`/users/${this.user.email}`)
+    db.doc(`/users/${this.user.username.trim().toLowerCase()}`)
       .get()
       .then((doc) => {
         if (doc.exists) {
@@ -45,12 +47,18 @@ export class LoginPage implements OnInit {
         }
       })
       .then((data) => {
+        data.user.updateProfile({
+          displayName: this.user.username,
+        });
         const userCred = {
           userId: data.user.uid,
-          email: this.user.email,
+          email: this.user.email.trim().toLowerCase(),
+          username: this.user.username.trim().toLowerCase(),
           createdAt: new Date().toISOString(),
         };
-        db.doc(`/users/${this.user.email}`).set(userCred);
+        db.doc(`/users/${this.user.username.trim().toLowerCase()}`).set(
+          userCred
+        );
       })
       .then(() => {
         this.router.navigate(["tabs"]);

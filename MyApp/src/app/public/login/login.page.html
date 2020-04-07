@@ -22,6 +22,14 @@
           <div class="ion-padding bottom-padding">
             <ion-item>
               <ion-input
+                name="username"
+                type="username"
+                placeholder="Username"
+                [(ngModel)]="user.username"
+              ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input
                 name="email"
                 type="email"
                 placeholder="Email"
