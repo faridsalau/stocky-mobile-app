@@ -51,6 +51,7 @@ export class Tab1Page {
     const ref = await db.collection("user_shoes");
     const query = await ref.orderBy("createdAt", "desc");
     const allShoes = await query.get();
+    console.log(username);
     if (username) {
       allShoes.forEach((shoe) => {
         const shoeData = shoe.data();
