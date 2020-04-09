@@ -5,19 +5,20 @@
 </ion-header>
 
 <ion-content>
-
-  <input 
+  <input
     type="file"
     name="avatar"
     accept="image/png, image/jpeg"
     (change)="onFileSelected($event)"
-    >
+  />
 
-  <ion-input 
-    name="shoe name" 
-    type="text" 
-    placeholder="Shoe Name" 
-    [(ngModel)]="shoe.name">
+  <!-- You must create a shoe object in the ts file in order to use shoe.name -->
+  <ion-input
+    name="shoe name"
+    type="text"
+    placeholder="Shoe Name"
+    [(ngModel)]="shoe.name"
+  >
   </ion-input>
 
   <ion-item>
@@ -29,6 +30,4 @@
       <ion-select-option value="m">Mint</ion-select-option>
     </ion-select>
   </ion-item>
-
-
 </ion-content>
