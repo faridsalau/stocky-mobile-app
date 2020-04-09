@@ -5,19 +5,14 @@
 </ion-header>
 
 <ion-content>
-  <input
-    type="file"
-    name="avatar"
-    accept="image/png, image/jpeg"
-    (change)="onFileSelected($event)"
-  />
+  <p>Leave the url link of your shoes in the input field below.</p>
+  <ion-input type="text" placeholder="Url"></ion-input>
 
   <!-- You must create a shoe object in the ts file in order to use shoe.name -->
   <ion-input
     name="shoe name"
     type="text"
     placeholder="Shoe Name"
-    [(ngModel)]="shoe.name"
   >
   </ion-input>
 
