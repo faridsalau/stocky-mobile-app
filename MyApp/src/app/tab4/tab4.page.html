@@ -6,23 +6,25 @@
 
 <ion-content>
   <p>Leave the url link of your shoes in the input field below.</p>
-  <ion-input type="text" placeholder="Url"></ion-input>
+  <ion-input type="text" placeholder="Url" [(ngModel)]="shoe.url"></ion-input>
 
-  <!-- You must create a shoe object in the ts file in order to use shoe.name -->
   <ion-input
-    name="shoe name"
+    name="shoe-name"
     type="text"
     placeholder="Shoe Name"
+    [(ngModel)]="shoe.name"
   >
   </ion-input>
 
   <ion-item>
     <ion-label>Shoe condition</ion-label>
-    <ion-select placeholder="Select One">
-      <ion-select-option value="b">Beat</ion-select-option>
-      <ion-select-option value="w">Worn</ion-select-option>
-      <ion-select-option value="sw">Slightly Worn</ion-select-option>
-      <ion-select-option value="m">Mint</ion-select-option>
+    <ion-select placeholder="Select One" [(ngModel)]="shoe.condition">
+      <ion-select-option value="Beat">Beat</ion-select-option>
+      <ion-select-option value="Worn">Worn</ion-select-option>
+      <ion-select-option value="Slightly worn">Slightly Worn</ion-select-option>
+      <ion-select-option value="Mint">Mint</ion-select-option>
     </ion-select>
   </ion-item>
+
+  <ion-button expand="block" (click)="submit()">Submit</ion-button>
 </ion-content>
