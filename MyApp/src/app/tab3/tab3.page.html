@@ -45,4 +45,16 @@
       <ion-checkbox checked="{{hasUnion}}"></ion-checkbox>
     </ion-item>
   </ion-list>
+  <a (click)="toggleShow()"><h5>Reset Password</h5></a>
+  <ion-item *ngIf="show">
+    <ion-input
+      name="reset-email"
+      type="email"
+      placeholder="Reset email"
+      [(ngModel)]="resetEmail"
+    ></ion-input>
+    <ion-button expand="block" (click)="sendReset()"
+      >Send reset email</ion-button
+    >
+  </ion-item>
 </ion-content>

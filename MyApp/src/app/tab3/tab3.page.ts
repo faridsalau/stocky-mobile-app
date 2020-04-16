@@ -18,24 +18,14 @@ export class Tab3Page {
   hasWalmart: boolean = false;
   hasKroger: boolean = false;
   hasUnion: boolean = false;
+  show: boolean = false;
+  resetEmail: string = "";
   constructor(
     private alertController: AlertController,
     public afAuth: AngularFireAuth,
     private fireStore: AngularFirestore,
     private router: Router
   ) {}
-
-  async pickShoeSize() {
-    const alert = await this.alertController.create({
-      header: "Pick Shoe Size",
-      subHeader: "Not yet implemented",
-      message:
-        "The user will be able to select their shoe size out of a list of numbers",
-      buttons: ["OK"],
-    });
-
-    await alert.present();
-  }
 
   logout() {
     this.afAuth.auth
@@ -46,6 +36,30 @@ export class Tab3Page {
       .catch(() => {
         console.log("Something went wrong, please try again");
       });
+  }
+
+  sendReset() {
+    const auth = this.afAuth.auth;
+    auth
+      .sendPasswordResetEmail(this.resetEmail)
+      .then(() => {
+        console.log("Email sent");
+      })
+      .catch((err) => {
+        if (err.code === "auth/user-not-found") {
+          console.log("No account associated with this email has been found.");
+        } else if (err.code === "auth/too-many-requests") {
+          console.log(
+            "Too many requests for this email have been detected, please try again later."
+          );
+        } else {
+          console.log("Something went wrong, please try again.");
+        }
+      });
+  }
+
+  toggleShow() {
+    this.show = !this.show;
   }
 
   async ngOnInit() {
